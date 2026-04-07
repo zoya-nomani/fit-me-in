@@ -187,7 +187,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
 .todo-main{flex:1;min-width:0}
 .todo-cb{width:17px;height:17px;border-radius:5px;border:1.5px solid var(--border-med);flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;transition:all .15s;cursor:pointer}
 .todo-cb.checked{background:var(--text);border-color:var(--text)}
-.todo-cb.checked::after{content:'âœ“';font-size:10px;color:var(--bg)}
+.todo-cb.checked::after{content:'+';font-size:10px;color:var(--bg)}
 .todo-text{flex:1;font-size:13px;color:var(--text);line-height:1.4}
 .todo-text.done{text-decoration:line-through;color:var(--text3)}
 .todo-meta{font-size:11px;color:var(--text3);margin-top:4px;line-height:1.5}
@@ -294,19 +294,19 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
   <div class="logo">My Calendar<span>your day, all in one place</span></div>
   <div class="nav-section">
     <div class="nav-label">View</div>
-    <button class="nav-btn active" id="sideToday" onclick="setView(&#39;today&#39;)"><span class="nav-icon">â˜€</span>Today</button>
-    <button class="nav-btn" id="sideWeek" onclick="setView(&#39;week&#39;)"><span class="nav-icon">â–¤</span>Week</button>
-    <button class="nav-btn" id="sideMonth" onclick="setView(&#39;month&#39;)"><span class="nav-icon">â–¦</span>Month</button>
-    <button class="nav-btn" id="sideTodo" onclick="setView(&#39;todo&#39;)"><span class="nav-icon">âœ“</span>To-Do</button>
-    <button class="nav-btn" id="sideNotes" onclick="setView(&#39;notes&#39;)"><span class="nav-icon">âœŽ</span>Notes</button>
+    <button class="nav-btn active" id="sideToday" onclick="setView(&#39;today&#39;)"><span class="nav-icon">T</span>Today</button>
+    <button class="nav-btn" id="sideWeek" onclick="setView(&#39;week&#39;)"><span class="nav-icon">W</span>Week</button>
+    <button class="nav-btn" id="sideMonth" onclick="setView(&#39;month&#39;)"><span class="nav-icon">M</span>Month</button>
+    <button class="nav-btn" id="sideTodo" onclick="setView(&#39;todo&#39;)"><span class="nav-icon">+</span>To-Do</button>
+    <button class="nav-btn" id="sideNotes" onclick="setView(&#39;notes&#39;)"><span class="nav-icon">N</span>Notes</button>
   </div>
   <div class="cals-section">
     <div class="nav-label">Calendars</div>
-    <div id="sideCalsList"><div class="cal-item"><div class="cal-dot" style="background:#3B82F6"></div><div class="cal-name">Work</div><button class="cal-edit-btn" onclick="openEditCal(1,event)">âœŽ</button></div><div class="cal-item"><div class="cal-dot" style="background:#8B5CF6"></div><div class="cal-name">Personal</div><button class="cal-edit-btn" onclick="openEditCal(2,event)">âœŽ</button></div><div class="cal-item"><div class="cal-dot" style="background:#10B981"></div><div class="cal-name">Other</div><button class="cal-edit-btn" onclick="openEditCal(3,event)">âœŽ</button></div></div>
+<div id="sideCalsList"><div class="cal-item"><div class="cal-dot" style="background:#3B82F6"></div><div class="cal-name">Work</div><button class="cal-edit-btn" onclick="openEditCal(1,event)">Edit</button></div><div class="cal-item"><div class="cal-dot" style="background:#8B5CF6"></div><div class="cal-name">Personal</div><button class="cal-edit-btn" onclick="openEditCal(2,event)">Edit</button></div><div class="cal-item"><div class="cal-dot" style="background:#10B981"></div><div class="cal-name">Other</div><button class="cal-edit-btn" onclick="openEditCal(3,event)">Edit</button></div></div>
     <button class="new-cal-btn" onclick="openNewCal()">+ New calendar</button>
   </div>
   <div class="sidebar-footer">
-    <button class="footer-btn" onclick="openImportModal()">â†“ Import .ics file</button>
+    <button class="footer-btn" onclick="openImportModal()">Import .ics file</button>
   </div>
 </aside>
 <div class="main">
@@ -320,20 +320,20 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
         <button class="view-tab" id="tabNotes" onclick="setView(&#39;notes&#39;)">Notes</button>
       </div>
       <div class="period-nav" id="periodNav" style="display:none">
-        <button class="pnav-btn" onclick="shiftPeriod(-1)">â€¹</button>
+        <button class="pnav-btn" onclick="shiftPeriod(-1)">&lt;</button>
         <div class="period-label" id="periodLabel"></div>
-        <button class="pnav-btn" onclick="shiftPeriod(1)">â€º</button>
+        <button class="pnav-btn" onclick="shiftPeriod(1)">&gt;</button>
         <button class="mbtn" style="font-size:12px;padding:5px 11px" onclick="jumpToday()">Today</button>
       </div>
     </div>
     <button class="add-btn" id="topAddBtn" onclick="topAdd()">+ Add event</button>
   </div>
-  <div class="content" id="mainContent"><div class="today-hdr"><div class="today-big">April 6</div><div class="today-sub">Monday Â· 2026</div></div><div class="tl-wrap"><div class="no-events"><div style="font-size:28px">ðŸ—“</div><div>Nothing scheduled</div></div></div></div>
+  <div class="content" id="mainContent"><div class="today-hdr"><div class="today-big">April 6</div><div class="today-sub">Monday - 2026</div></div><div class="tl-wrap"><div class="no-events"><div style="font-size:28px">*</div><div>Nothing scheduled</div></div></div></div>
 </div>
 </div>
 <input type="file" id="icsFile" accept=".ics" style="display:none">
 <script>
-// â”€â”€ CONSTANTS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// CONSTANTS
 const PALETTE=['#3B82F6','#8B5CF6','#10B981','#EF4444','#F59E0B','#06B6D4','#EC4899','#F97316','#64748B','#84CC16','#6366F1','#14B8A6','#E11D48','#D97706','#0EA5E9'];
 const MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
 const DAYS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
@@ -342,7 +342,7 @@ const TODAY=new Date();
 const PX_PER_HOUR=60;
 const DAY_MINS=24*60; // use full 24h day for breakdown %
 
-// â”€â”€ STATE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// STATE
 let S=loadState();
 let view='today';
 let navYear=TODAY.getFullYear(), navMonth=TODAY.getMonth();
@@ -357,7 +357,7 @@ function defaultState(){return{
 function loadState(){try{const s=localStorage.getItem('mycal_v6');return s?JSON.parse(s):defaultState();}catch{return defaultState();}}
 function persist(){localStorage.setItem('mycal_v6',JSON.stringify(S));}
 
-// â”€â”€ HELPERS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// HELPERS
 function fmtDate(d){return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());}
 function pad(n){return String(n).padStart(2,'0');}
 function todayStr(){return fmtDate(TODAY);}
@@ -373,12 +373,12 @@ function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').
 function linkify(t){return esc(t).replace(/(https?:\/\/[^\s<]+)/g,'<a href="$1" target="_blank" rel="noopener">$1</a>');}
 function validHex(h){return/^#[0-9A-Fa-f]{6}$/.test(h);}
 
-// â”€â”€ SIDEBAR â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// SIDEBAR
 function renderSidebar(){
   const el=document.getElementById('sideCalsList');el.innerHTML='';
   S.calendars.forEach(cal=>{
     const row=document.createElement('div');row.className='cal-item'+(cal.visible?'':' hidden');
-    row.innerHTML=`<div class="cal-dot" style="background:${cal.color}"></div><div class="cal-name">${esc(cal.name)}</div><button class="cal-edit-btn" onclick="openEditCal(${cal.id},event)">âœŽ</button>`;
+row.innerHTML=`<div class="cal-dot" style="background:${cal.color}"></div><div class="cal-name">${esc(cal.name)}</div><button class="cal-edit-btn" onclick="openEditCal(${cal.id},event)">Edit</button>`;
     row.addEventListener('click',e=>{if(e.target.closest('.cal-edit-btn'))return;cal.visible=!cal.visible;persist();renderAll();});
     el.appendChild(row);
   });
@@ -386,7 +386,7 @@ function renderSidebar(){
   ab.textContent=view==='notes'?'+ New note':view==='todo'?'+ New list':'+ Add event';
 }
 
-// â”€â”€ TIMELINE builder (shared by Today + Day Preview) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// TIMELINE builder (shared by Today + Day Preview)
 function buildTimeline(evs){
   const wrap=document.createElement('div');wrap.className='tl-wrap';
   const allDay=evs.filter(e=>!e.time);
@@ -404,7 +404,7 @@ function buildTimeline(evs){
   }
 
   if(!timed.length){
-    if(!allDay.length){const e=document.createElement('div');e.className='no-events';e.innerHTML='<div style="font-size:28px">ðŸ—“</div><div>Nothing scheduled</div>';wrap.appendChild(e);}
+if(!allDay.length){const e=document.createElement('div');e.className='no-events';e.innerHTML='<div style="font-size:28px">*</div><div>Nothing scheduled</div>';wrap.appendChild(e);}
     return wrap;
   }
 
@@ -449,7 +449,7 @@ function buildTimeline(evs){
     const el=document.createElement('div');el.className='tl-ev';
     el.style.cssText=`top:${top}px;height:${height}px;left:${col*colW}%;width:calc(${colW}% - 3px);background:${color};border-left-color:${color};color:#fff;`;
     const preview=(ev.description||ev.notes||'').replace(/\n/g,' ');
-    el.innerHTML=`<div class="tl-ev-time">${fmt12(ev.time)}${ev.endTime?' â€“ '+fmt12(ev.endTime):''}</div><div class="tl-ev-title">${esc(ev.title)}</div><div class="tl-ev-cal">${esc(cal?cal.name:'')}</div>${preview?`<div class="tl-ev-desc">${esc(preview.substring(0,80))}</div>`:''}`;
+    el.innerHTML=`<div class="tl-ev-time">${fmt12(ev.time)}${ev.endTime?' - '+fmt12(ev.endTime):''}</div><div class="tl-ev-title">${esc(ev.title)}</div><div class="tl-ev-cal">${esc(cal?cal.name:'')}</div>${preview?`<div class="tl-ev-desc">${esc(preview.substring(0,80))}</div>`:''}`;
     el.onclick=()=>openEventDetail(ev.id);
     evCol.appendChild(el);
   });
@@ -469,7 +469,7 @@ function buildTimeline(evs){
   return wrap;
 }
 
-// â”€â”€ DAY BREAKDOWN â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// DAY BREAKDOWN
 function buildBreakdown(evs){
   const timed=evs.filter(e=>e.time&&e.durationMins>0);
   if(!timed.length)return null;
@@ -525,20 +525,20 @@ function buildBreakdown(evs){
   return wrap;
 }
 
-// â”€â”€ TODAY â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// TODAY
 function renderToday(){
   const el=document.getElementById('mainContent');
   const ts=todayStr(),vis=visCals();
   const evs=S.events.filter(e=>e.date===ts&&vis.has(e.calId)).sort((a,b)=>(a.time||'').localeCompare(b.time||''));
   el.innerHTML='';
   const hdr=document.createElement('div');hdr.className='today-hdr';
-  hdr.innerHTML=`<div class="today-big">${MONTHS[TODAY.getMonth()]} ${TODAY.getDate()}</div><div class="today-sub">${DAYS[TODAY.getDay()]} Â· ${TODAY.getFullYear()}</div>`;
+  hdr.innerHTML=`<div class="today-big">${MONTHS[TODAY.getMonth()]} ${TODAY.getDate()}</div><div class="today-sub">${DAYS[TODAY.getDay()]} - ${TODAY.getFullYear()}</div>`;
   el.appendChild(hdr);
   el.appendChild(buildTimeline(evs));
   const bd=buildBreakdown(evs);if(bd)el.appendChild(bd);
 }
 
-// â”€â”€ WEEK â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// WEEK
 function renderWeek(){
   const el=document.getElementById('mainContent');
   const vis=visCals(),ts=todayStr();
@@ -602,7 +602,7 @@ function renderWeek(){
   el.appendChild(wrap);
 }
 
-// â”€â”€ MONTH â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// MONTH
 function renderMonth(){
   const el=document.getElementById('mainContent');
   const vis=visCals(),ts=todayStr();
@@ -620,7 +620,7 @@ function renderMonth(){
     const dayEvs=S.events.filter(e=>e.date===ds&&vis.has(e.calId)).sort((a,b)=>(a.time||'').localeCompare(b.time||''));
     const cell=document.createElement('div');cell.className='mcell'+(c.other?' mother':'')+(isT?' mtoday':'');
     cell.innerHTML=`<div class="mday">${c.day}</div>`;
-    // show up to 3 chips, then "+N more" â€” clicking either opens day preview
+// show up to 3 chips, then "+N more" - clicking either opens day preview
     dayEvs.slice(0,3).forEach(ev=>{
       const cal=getCal(ev.calId);const color=cal?cal.color:'#888';
       const chip=document.createElement('div');chip.className='mchip';chip.style.background=color;
@@ -634,7 +634,7 @@ function renderMonth(){
   });
 }
 
-// â”€â”€ DAY PREVIEW MODAL â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// DAY PREVIEW MODAL
 function openDayPreview(ds){
   const vis=visCals();
   const evs=S.events.filter(e=>e.date===ds&&vis.has(e.calId)).sort((a,b)=>(a.time||'').localeCompare(b.time||''));
@@ -646,14 +646,14 @@ function openDayPreview(ds){
   const hdr=document.createElement('div');hdr.style.cssText='display:flex;align-items:center;justify-content:space-between;margin-bottom:16px';
   hdr.innerHTML=`<div style="font-family:var(--font-display);font-size:20px;color:var(--text)">${title}</div><div style="display:flex;gap:8px"><button class="mbtn" style="font-size:12px;padding:5px 12px" onclick="closeModal();openAddEvent('${ds}')">+ Add event</button><button class="mbtn" onclick="closeModal()">Close</button></div>`;
   m.appendChild(hdr);
-  if(!evs.length){const emp=document.createElement('div');emp.className='no-events';emp.style.padding='30px 0';emp.innerHTML='<div style="font-size:24px">ðŸ—“</div><div>No events this day</div>';m.appendChild(emp);}
+  if(!evs.length){const emp=document.createElement('div');emp.className='no-events';emp.style.padding='30px 0';emp.innerHTML='<div style="font-size:24px">*</div><div>No events this day</div>';m.appendChild(emp);}
   else{
     m.appendChild(buildTimeline(evs));
     const bd=buildBreakdown(evs);if(bd)m.appendChild(bd);
   }
 }
 
-// â”€â”€ NOTES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// NOTES
 function renderNotes(){
   const el=document.getElementById('mainContent');el.innerHTML='';
   const layout=document.createElement('div');layout.className='split-layout';
@@ -668,15 +668,15 @@ function renderNotes(){
   const nb=document.createElement('button');nb.className='new-side-btn';nb.textContent='+ New note';nb.onclick=createNote;sb.appendChild(nb);
   const editor=document.createElement('div');editor.className='split-main';
   const note=S.notes.find(n=>n.id===activeNoteId);
-  if(!note)editor.innerHTML='<div class="split-placeholder"><div style="font-size:28px">âœŽ</div><div>Select a note or create one</div></div>';
+  if(!note)editor.innerHTML='<div class="split-placeholder"><div style="font-size:28px">N</div><div>Select a note or create one</div></div>';
   else{
-    editor.innerHTML=`<div class="note-topbar"><input class="note-title-inp" id="noteTitleInp" placeholder="Title" value="${esc(note.title||'')}"><button class="note-del-btn" onclick="deleteNote(${note.id})">Delete</button></div><textarea class="note-body-inp" id="noteBodyInp" placeholder="Start writingâ€¦">${esc(note.body||'')}</textarea><div class="note-saved" id="noteSavedLbl">Saved</div>`;
+    editor.innerHTML=`<div class="note-topbar"><input class="note-title-inp" id="noteTitleInp" placeholder="Title" value="${esc(note.title||'')}"><button class="note-del-btn" onclick="deleteNote(${note.id})">Delete</button></div><textarea class="note-body-inp" id="noteBodyInp" placeholder="Start writing...">${esc(note.body||'')}</textarea><div class="note-saved" id="noteSavedLbl">Saved</div>`;
     setTimeout(()=>{const ti=document.getElementById('noteTitleInp'),bi=document.getElementById('noteBodyInp');if(ti)ti.addEventListener('input',scheduleNoteSave);if(bi)bi.addEventListener('input',scheduleNoteSave);},0);
   }
   layout.appendChild(sb);layout.appendChild(editor);el.appendChild(layout);
 }
 function scheduleNoteSave(){
-  const lbl=document.getElementById('noteSavedLbl');if(lbl)lbl.textContent='Savingâ€¦';
+  const lbl=document.getElementById('noteSavedLbl');if(lbl)lbl.textContent='Saving...';
   clearTimeout(noteSaveTimer);
   noteSaveTimer=setTimeout(()=>{
     const note=S.notes.find(n=>n.id===activeNoteId);if(!note)return;
@@ -688,7 +688,7 @@ function scheduleNoteSave(){
 function createNote(){const note={id:S.nextNoteId++,title:'',body:'',updated:new Date().toLocaleDateString()};S.notes.push(note);activeNoteId=note.id;persist();renderNotes();setTimeout(()=>{const ti=document.getElementById('noteTitleInp');if(ti)ti.focus();},50);}
 function deleteNote(id){S.notes=S.notes.filter(n=>n.id!==id);if(activeNoteId===id)activeNoteId=S.notes.length?S.notes[S.notes.length-1].id:null;persist();renderNotes();}
 
-// â”€â”€ TO-DO â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// TO-DO
 function renderTodo(){
   const el=document.getElementById('mainContent');el.innerHTML='';
   const layout=document.createElement('div');layout.className='split-layout';
@@ -702,16 +702,16 @@ function renderTodo(){
   const nb=document.createElement('button');nb.className='new-side-btn';nb.textContent='+ New list';nb.onclick=openNewTodoList;sb.appendChild(nb);
   const main=document.createElement('div');main.className='split-main';
   const list=S.todoLists.find(l=>l.id===activeTodoListId);
-  if(!list)main.innerHTML='<div class="split-placeholder"><div style="font-size:28px">âœ“</div><div>Select or create a list</div></div>';
+  if(!list)main.innerHTML='<div class="split-placeholder"><div style="font-size:28px">+</div><div>Select or create a list</div></div>';
   else{
     const todos=S.todos.filter(t=>t.listId===list.id);
     const open=todos.filter(t=>!t.done),done=todos.filter(t=>t.done);
-    main.innerHTML=`<div class="todo-topbar"><div class="todo-list-title" style="color:${list.color}">${esc(list.name)}</div><button class="todo-list-edit" onclick="openEditTodoList(${list.id})">Edit list</button></div><div class="todo-items" id="todoItems"></div><div class="todo-add-row"><input class="todo-add-inp" id="todoAddInp" placeholder="Add a taskâ€¦ (press Enter)" onkeydown="if(event.key==='Enter')addTodoItem()"><button class="todo-add-btn" onclick="addTodoItem()">Add</button></div>`;
+    main.innerHTML=`<div class="todo-topbar"><div class="todo-list-title" style="color:${list.color}">${esc(list.name)}</div><button class="todo-list-edit" onclick="openEditTodoList(${list.id})">Edit list</button></div><div class="todo-items" id="todoItems"></div><div class="todo-add-row"><input class="todo-add-inp" id="todoAddInp" placeholder="Add a task... (press Enter)" onkeydown="if(event.key==='Enter')addTodoItem()"><button class="todo-add-btn" onclick="addTodoItem()">Add</button></div>`;
     setTimeout(()=>{
       const container=document.getElementById('todoItems');if(!container)return;
       const all=[...open,...done];
       if(!all.length){container.innerHTML='<div style="text-align:center;color:var(--text3);padding:30px;font-size:13px">No tasks yet</div>';return;}
-      all.forEach(todo=>{const row=document.createElement('div');row.className='todo-item';row.innerHTML=`<div class="todo-cb${todo.done?' checked':''}" onclick="toggleTodo(${todo.id})"></div><div class="todo-text${todo.done?' done':''}">${esc(todo.text)}</div><button class="todo-del" onclick="deleteTodo(${todo.id})">âœ•</button>`;container.appendChild(row);});
+      all.forEach(todo=>{const row=document.createElement('div');row.className='todo-item';row.innerHTML=`<div class="todo-cb${todo.done?' checked':''}" onclick="toggleTodo(${todo.id})"></div><div class="todo-text${todo.done?' done':''}">${esc(todo.text)}</div><button class="todo-del" onclick="deleteTodo(${todo.id})">Delete</button>`;container.appendChild(row);});
     },0);
   }
   layout.appendChild(sb);layout.appendChild(main);el.appendChild(layout);
@@ -719,13 +719,13 @@ function renderTodo(){
 function addTodoItem(){const inp=document.getElementById('todoAddInp');if(!inp)return;const text=inp.value.trim();if(!text||!activeTodoListId)return;S.todos.push({id:S.nextTodoId++,listId:activeTodoListId,text,done:false});inp.value='';persist();renderTodo();setTimeout(()=>{const i=document.getElementById('todoAddInp');if(i)i.focus();},30);}
 function toggleTodo(id){const t=S.todos.find(t=>t.id===id);if(t){t.done=!t.done;persist();renderTodo();}}
 function deleteTodo(id){S.todos=S.todos.filter(t=>t.id!==id);persist();renderTodo();}
-function openNewTodoList(){const def=PALETTE[S.todoLists.length%PALETTE.length];modal(`<h3>New list</h3><div class="frow"><label>Name</label><input id="tlName" type="text" placeholder="e.g. Shopping, Work Tasksâ€¦"/></div><div class="frow"><label>Color</label>${colorPickerHTML(def)}</div><div class="modal-actions"><button class="mbtn" onclick="closeModal()">Cancel</button><button class="mbtn mbtn-primary" onclick="createTodoList()">Create</button></div>`);setTimeout(()=>document.getElementById('tlName').focus(),50);}
+function openNewTodoList(){const def=PALETTE[S.todoLists.length%PALETTE.length];modal(`<h3>New list</h3><div class="frow"><label>Name</label><input id="tlName" type="text" placeholder="e.g. Shopping, Work Tasks..."/></div><div class="frow"><label>Color</label>${colorPickerHTML(def)}</div><div class="modal-actions"><button class="mbtn" onclick="closeModal()">Cancel</button><button class="mbtn mbtn-primary" onclick="createTodoList()">Create</button></div>`);setTimeout(()=>document.getElementById('tlName').focus(),50);}
 function createTodoList(){const name=document.getElementById('tlName').value.trim();if(!name){document.getElementById('tlName').classList.add('err');return;}S.todoLists.push({id:S.nextTodoListId++,name,color:document.getElementById('pickedColor').value});activeTodoListId=S.todoLists[S.todoLists.length-1].id;persist();closeModal();renderTodo();}
 function openEditTodoList(id){const list=S.todoLists.find(l=>l.id===id);if(!list)return;modal(`<h3>Edit list</h3><div class="frow"><label>Name</label><input id="tlName" type="text" value="${esc(list.name)}"/></div><div class="frow"><label>Color</label>${colorPickerHTML(list.color)}</div><div class="modal-actions"><button class="mbtn mbtn-danger" onclick="deleteTodoList(${id})">Delete list</button><button class="mbtn" onclick="closeModal()">Cancel</button><button class="mbtn mbtn-primary" onclick="saveTodoList(${id})">Save</button></div>`);setTimeout(()=>document.getElementById('tlName').focus(),50);}
 function saveTodoList(id){const list=S.todoLists.find(l=>l.id===id);const name=document.getElementById('tlName').value.trim();if(!name){document.getElementById('tlName').classList.add('err');return;}list.name=name;list.color=document.getElementById('pickedColor').value;persist();closeModal();renderTodo();}
 function deleteTodoList(id){if(!confirm('Delete this list and all its tasks?'))return;S.todoLists=S.todoLists.filter(l=>l.id!==id);S.todos=S.todos.filter(t=>t.listId!==id);if(activeTodoListId===id)activeTodoListId=S.todoLists[0]?.id||null;persist();closeModal();renderTodo();}
 
-// â”€â”€ VIEW CONTROL â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// VIEW CONTROL
 function setView(v){
   view=v;
   ['today','week','month','todo','notes'].forEach(n=>{const cap=n.charAt(0).toUpperCase()+n.slice(1);document.getElementById('tab'+cap).classList.toggle('active',v===n);document.getElementById('side'+cap).classList.toggle('active',v===n);});
@@ -737,11 +737,11 @@ function setView(v){
 function topAdd(){if(view==='notes')createNote();else if(view==='todo')openNewTodoList();else openAddEvent();}
 function renderMain(){if(view==='today')renderToday();else if(view==='week')renderWeek();else if(view==='month')renderMonth();else if(view==='notes')renderNotes();else if(view==='todo')renderTodo();}
 function renderAll(){renderSidebar();renderMain();}
-function updatePeriodLabel(){const el=document.getElementById('periodLabel');if(view==='month')el.textContent=MONTHS[navMonth]+' '+navYear;else if(view==='week'){const end=addDays(navWeekStart,6);el.textContent=fmtShort(navWeekStart)+' â€“ '+fmtShort(end);}}
+function updatePeriodLabel(){const el=document.getElementById('periodLabel');if(view==='month')el.textContent=MONTHS[navMonth]+' '+navYear;else if(view==='week'){const end=addDays(navWeekStart,6);el.textContent=fmtShort(navWeekStart)+' - '+fmtShort(end);}}
 function shiftPeriod(d){if(view==='month'){navMonth+=d;if(navMonth<0){navMonth=11;navYear--;}if(navMonth>11){navMonth=0;navYear++;}}else if(view==='week'){navWeekStart=addDays(navWeekStart,d*7);}updatePeriodLabel();renderMain();}
 function jumpToday(){navYear=TODAY.getFullYear();navMonth=TODAY.getMonth();navWeekStart=weekStart(TODAY);updatePeriodLabel();renderMain();}
 
-// â”€â”€ ADD EVENT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ADD EVENT
 function openAddEvent(prefill){
   const date=prefill||todayStr();
   const opts=S.calendars.map(c=>`<option value="${c.id}">${esc(c.name)}</option>`).join('');
@@ -754,7 +754,7 @@ function openAddEvent(prefill){
       <div class="frow"><label>End time</label><input id="evEndTime" type="time" value="10:00"/></div>
     </div>
     <div class="frow"><label>Location</label><input id="evLoc" type="text" placeholder="Optional"/></div>
-    <div class="frow"><label>Description</label><textarea id="evDesc" placeholder="Details, links, notesâ€¦"></textarea></div>
+    <div class="frow"><label>Description</label><textarea id="evDesc" placeholder="Details, links, notes..."></textarea></div>
     <div class="modal-actions"><button class="mbtn" onclick="closeModal()">Cancel</button><button class="mbtn mbtn-primary" onclick="saveEvent()">Save event</button></div>`);
   setTimeout(()=>document.getElementById('evTitle').focus(),50);
 }
@@ -766,30 +766,30 @@ function saveEvent(){
   persist();closeModal();renderAll();
 }
 
-// â”€â”€ EVENT DETAIL â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// EVENT DETAIL
 function openEventDetail(evId){
   const ev=S.events.find(e=>e.id===evId);if(!ev)return;
   const cal=getCal(ev.calId);const color=cal?cal.color:'#888';
   let infoRows='';
-  if(ev.location)infoRows+=`<div class="ev-info-key">ðŸ“ Location</div><div class="ev-info-val">${linkify(ev.location)}</div>`;
-  if(ev.organizer)infoRows+=`<div class="ev-info-key">ðŸ‘¤ Organizer</div><div class="ev-info-val">${esc(ev.organizer)}</div>`;
-  if(ev.attendees&&ev.attendees.length)infoRows+=`<div class="ev-info-key">ðŸ‘¥ Attendees</div><div class="ev-info-val">${ev.attendees.map(a=>esc(a)).join(', ')}</div>`;
-  if(ev.url)infoRows+=`<div class="ev-info-key">ðŸ”— Link</div><div class="ev-info-val"><a href="${esc(ev.url)}" target="_blank" rel="noopener">${esc(ev.url)}</a></div>`;
+  if(ev.location)infoRows+=`<div class="ev-info-key">Location</div><div class="ev-info-val">${linkify(ev.location)}</div>`;
+  if(ev.organizer)infoRows+=`<div class="ev-info-key">Organizer</div><div class="ev-info-val">${esc(ev.organizer)}</div>`;
+  if(ev.attendees&&ev.attendees.length)infoRows+=`<div class="ev-info-key">Attendees</div><div class="ev-info-val">${ev.attendees.map(a=>esc(a)).join(', ')}</div>`;
+  if(ev.url)infoRows+=`<div class="ev-info-key">Link</div><div class="ev-info-val"><a href="${esc(ev.url)}" target="_blank" rel="noopener">${esc(ev.url)}</a></div>`;
   const descText=(ev.description||'').replace(/\\n/g,'\n');
-  const timeStr=ev.time?(fmt12(ev.time)+(ev.endTime?' â€“ '+fmt12(ev.endTime):'')):'All day';
+  const timeStr=ev.time?(fmt12(ev.time)+(ev.endTime?' - '+fmt12(ev.endTime):'')):'All day';
   modal(`
     <div class="ev-hdr"><div class="ev-color-dot" style="background:${color}"></div><div class="ev-title-txt">${esc(ev.title)}</div></div>
-    <div class="ev-meta">ðŸ“… ${ev.date} Â· ${timeStr}</div>
+    <div class="ev-meta">${ev.date} - ${timeStr}</div>
     <div class="ev-badge" style="background:${hex2rgba(color,.12)};color:${color}"><span style="width:6px;height:6px;border-radius:50%;background:${color};display:inline-block"></span>${esc(cal?cal.name:'')}</div>
     ${infoRows?`<div class="ev-section"><div class="ev-section-label">Event details</div><div class="ev-info-grid">${infoRows}</div></div>`:''}
     ${descText?`<div class="ev-section"><div class="ev-section-label">Description</div><div class="ev-section-body">${linkify(descText)}</div></div>`:''}
-    <div class="ev-section"><div class="ev-section-label">My notes</div><textarea class="ev-notes-ta" id="evNotesTa" placeholder="Add your own notesâ€¦">${esc(ev.notes||'')}</textarea></div>
+    <div class="ev-section"><div class="ev-section-label">My notes</div><textarea class="ev-notes-ta" id="evNotesTa" placeholder="Add your own notes...">${esc(ev.notes||'')}</textarea></div>
     <div class="modal-actions"><button class="mbtn mbtn-danger" onclick="deleteEvent(${ev.id})">Delete</button><button class="mbtn" onclick="closeModal()">Close</button><button class="mbtn mbtn-primary" onclick="saveEvNotes(${ev.id})">Save notes</button></div>`);
 }
 function saveEvNotes(id){const ev=S.events.find(e=>e.id===id);if(!ev)return;const ta=document.getElementById('evNotesTa');if(ta)ev.notes=ta.value;persist();closeModal();renderAll();}
 function deleteEvent(id){S.events=S.events.filter(e=>e.id!==id);persist();closeModal();renderAll();}
 
-// â”€â”€ COLOR PICKER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// COLOR PICKER
 function colorPickerHTML(sel){
   return`<div class="color-picker-wrap">
     <div class="color-swatches">${PALETTE.map(c=>`<div class="cswatch${c.toLowerCase()===(sel||'').toLowerCase()?' sel':''}" style="background:${c}" data-color="${c}" onclick="pickSwatch(this)"></div>`).join('')}</div>
@@ -804,20 +804,20 @@ function pickSwatch(el){document.querySelectorAll('.cswatch').forEach(s=>s.class
 function syncFromWheel(val){document.getElementById('pickedColor').value=val;document.getElementById('colorHexInp').value=val;document.getElementById('colorPreview').style.background=val;document.querySelectorAll('.cswatch').forEach(s=>s.classList.remove('sel'));}
 function syncFromHex(val){if(!val.startsWith('#'))val='#'+val;if(!validHex(val))return;document.getElementById('pickedColor').value=val;document.getElementById('colorWheel').value=val;document.getElementById('colorPreview').style.background=val;document.querySelectorAll('.cswatch').forEach(s=>s.classList.remove('sel'));}
 
-// â”€â”€ CALENDAR MODALS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-function openNewCal(){const def=PALETTE[S.calendars.length%PALETTE.length];modal(`<h3>New calendar</h3><div class="frow"><label>Name</label><input id="calName" type="text" placeholder="e.g. Family, Classesâ€¦"/></div><div class="frow"><label>Color</label>${colorPickerHTML(def)}</div><div class="modal-actions"><button class="mbtn" onclick="closeModal()">Cancel</button><button class="mbtn mbtn-primary" onclick="createCal()">Create</button></div>`);setTimeout(()=>document.getElementById('calName').focus(),50);}
+// CALENDAR MODALS
+function openNewCal(){const def=PALETTE[S.calendars.length%PALETTE.length];modal(`<h3>New calendar</h3><div class="frow"><label>Name</label><input id="calName" type="text" placeholder="e.g. Family, Classes..."/></div><div class="frow"><label>Color</label>${colorPickerHTML(def)}</div><div class="modal-actions"><button class="mbtn" onclick="closeModal()">Cancel</button><button class="mbtn mbtn-primary" onclick="createCal()">Create</button></div>`);setTimeout(()=>document.getElementById('calName').focus(),50);}
 function createCal(){const name=document.getElementById('calName').value.trim();if(!name){document.getElementById('calName').classList.add('err');return;}S.calendars.push({id:S.nextCalId++,name,color:document.getElementById('pickedColor').value,visible:true});persist();closeModal();renderAll();}
 function openEditCal(id,e){e&&e.stopPropagation();const cal=getCal(id);if(!cal)return;modal(`<h3>Edit calendar</h3><div class="frow"><label>Name</label><input id="calName" type="text" value="${esc(cal.name)}"/></div><div class="frow"><label>Color</label>${colorPickerHTML(cal.color)}</div><div class="modal-actions"><button class="mbtn mbtn-danger" onclick="deleteCal(${id})">Delete</button><button class="mbtn" onclick="closeModal()">Cancel</button><button class="mbtn mbtn-primary" onclick="updateCal(${id})">Save</button></div>`);setTimeout(()=>document.getElementById('calName').focus(),50);}
 function updateCal(id){const cal=getCal(id);const name=document.getElementById('calName').value.trim();if(!name){document.getElementById('calName').classList.add('err');return;}cal.name=name;cal.color=document.getElementById('pickedColor').value;persist();closeModal();renderAll();}
 function deleteCal(id){if(!confirm('Delete this calendar? All its events will be removed.'))return;S.calendars=S.calendars.filter(c=>c.id!==id);S.events=S.events.filter(e=>e.calId!==id);persist();closeModal();renderAll();}
 
-// â”€â”€ ICS IMPORT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ICS IMPORT
 function openImportModal(){
   const opts=S.calendars.map(c=>`<option value="${c.id}">${esc(c.name)}</option>`).join('');
   modal(`<h3>Import calendar (.ics)</h3>
     <div class="frow"><label>Add events to</label><select id="importCal">${opts}</select></div>
-    <div class="frow"><label>File</label><button class="mbtn" style="width:100%" onclick="document.getElementById('icsFile').click()">Choose .ics fileâ€¦</button>
-    <div class="tip">Google Calendar: Settings â†’ your calendar â†’ Export<br>Outlook: File â†’ Open & Export â†’ Export to file â†’ ICS</div></div>
+    <div class="frow"><label>File</label><button class="mbtn" style="width:100%" onclick="document.getElementById('icsFile').click()">Choose .ics file...</button>
+    <div class="tip">Google Calendar: Settings -> your calendar -> Export<br>Outlook: File -> Open & Export -> Export to file -> ICS</div></div>
     <div id="importResult" style="font-size:13px;color:var(--text2);margin-top:8px;display:none"></div>
     <div class="modal-actions"><button class="mbtn mbtn-primary" onclick="closeModal()">Done</button></div>`);
 }
@@ -837,17 +837,17 @@ document.getElementById('icsFile').addEventListener('change',function(){
     });
     persist();renderAll();
     const res=document.getElementById('importResult');
-    if(res){res.style.display='block';res.textContent=`âœ“ Imported ${added} event${added!==1?'s':''}${skipped>0?' ('+skipped+' duplicates skipped)':''}`;};
+    if(res){res.style.display='block';res.textContent=`Imported ${added} event${added!==1?'s':''}${skipped>0?' ('+skipped+' duplicates skipped)':''}`;};
   };
   reader.readAsText(file);this.value='';
 });
 
-// â”€â”€ ICS PARSER â€” fully timezone-aware, no event limits â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ICS PARSER - fully timezone-aware, no event limits
 function parseICS(raw,calId){
   // Step 1: normalize + unfold RFC 5545 folded lines
   const text=raw.replace(/\r\n/g,'\n').replace(/\r/g,'\n').replace(/\n[ \t]/g,'');
 
-  // Step 2: read VTIMEZONE blocks to build tzidâ†’offset map
+  // Step 2: read VTIMEZONE blocks to build tzid-to-offset map
   // We read both STANDARD and DAYLIGHT components and pick the one
   // whose DTSTART is most recently before today, so DST is handled correctly.
   const tzMap={};
@@ -882,7 +882,7 @@ function parseICS(raw,calId){
     tzMap[tzid]=(past.length?past[0]:components[0]).offsetMins;
   });
 
-  // Step 3: parse a single DTSTART/DTEND value string + its params â†’ local JS Date
+  // Step 3: parse a single DTSTART/DTEND value string + its params into a local JS Date
   function parseDTVal(val,params){
     params=params||'';
     // All-day: VALUE=DATE (without DATE-TIME) or bare 8 digits
@@ -915,7 +915,7 @@ function parseICS(raw,calId){
     return{date:d,isAllDay:false};
   }
 
-  // Step 4: parse every VEVENT â€” NO artificial limit
+  // Step 4: parse every VEVENT - no artificial limit
   const result=[];
   let id=S.nextEvId;
   // split on BEGIN:VEVENT case-insensitively
@@ -1018,13 +1018,13 @@ function parseICS(raw,calId){
   return result;
 }
 
-// â”€â”€ MODAL â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// MODAL
 let curModal=null;
 function modal(html){closeModal();const bg=document.createElement('div');bg.className='modal-bg';bg.innerHTML=`<div class="modal">${html}</div>`;bg.addEventListener('click',e=>{if(e.target===bg)closeModal();});document.body.appendChild(bg);curModal=bg;return bg;}
 function closeModal(){if(curModal){curModal.remove();curModal=null;}}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 
-// â”€â”€ BOOT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// BOOT
 // migrate from old storage keys
 ['mycal_v4','mycal_v5'].forEach(k=>{
   if(!localStorage.getItem('mycal_v6')&&localStorage.getItem(k)){
@@ -1066,8 +1066,25 @@ updatePeriodLabel();renderAll();
   function eventTimeLabel(ev){return ev.time?`${fmt12(ev.time)}${ev.endTime?' - '+fmt12(ev.endTime):''}`:'All day';}
   function sortEvents(a,b){return (a.time?1:0)===(b.time?1:0)?((a.time||'').localeCompare(b.time||'')||a.title.localeCompare(b.title)):(a.time?1:-1);}
   function planetIcon(cal){
-    const variant=['planet-v1','planet-v2','planet-v3','planet-v4'][Math.abs(cal.id)%4];
-    return `<span class="planet-icon ${variant}" style="--planet:${cal.color};--planet-ring:${hex2rgba(cal.color,.55)}"><span class="planet-core"></span><span class="planet-ring"></span><span class="planet-spot s1"></span><span class="planet-spot s2"></span><span class="planet-spot s3"></span></span>`;
+    const ringRotation=[-24,18,0,-10][Math.abs(cal.id)%4];
+    const ringDash=Math.abs(cal.id)%4===3?'3 2':'';
+    const ringOpacity=Math.abs(cal.id)%4===2?'.55':'.92';
+    return `<svg class="planet-icon" viewBox="0 0 24 24" aria-hidden="true">
+      <defs>
+        <radialGradient id="planetGlow${cal.id}" cx="30%" cy="30%">
+          <stop offset="0%" stop-color="rgba(255,255,255,.85)"></stop>
+          <stop offset="28%" stop-color="rgba(255,255,255,.1)"></stop>
+          <stop offset="100%" stop-color="${cal.color}"></stop>
+        </radialGradient>
+      </defs>
+      <g transform="rotate(${ringRotation} 12 12)" opacity="${ringOpacity}">
+        <ellipse cx="12" cy="12" rx="10" ry="${Math.abs(cal.id)%4===2?4.8:3.4}" fill="none" stroke="${hex2rgba(cal.color,.55)}" stroke-width="1.6" ${ringDash?`stroke-dasharray="${ringDash}"`:''}></ellipse>
+      </g>
+      <circle cx="12" cy="12" r="7.1" fill="url(#planetGlow${cal.id})"></circle>
+      <circle cx="9.2" cy="9.1" r="1.2" fill="rgba(255,255,255,.35)"></circle>
+      <circle cx="14.8" cy="12.4" r=".9" fill="rgba(255,255,255,.22)"></circle>
+      <circle cx="11.5" cy="15.6" r=".7" fill="rgba(255,255,255,.18)"></circle>
+    </svg>`;
   }
   function computeDuration(start,end){const s=timeToMins(start),e=timeToMins(end);return (s!=null&&e!=null&&e>s)?e-s:0;}
   function computeOverlapLayout(events){
@@ -1411,7 +1428,7 @@ updatePeriodLabel();renderAll();
   };
   openImportModal=function(){
     const opts=S.calendars.map(c=>`<option value="${c.id}">${esc(c.name)}</option>`).join('');
-    modal(`<h3>Import calendar</h3><div class="frow"><label>Add events to</label><select id="importCal">${opts}</select></div><div class="frow"><label>File</label><button class="mbtn" style="width:100%" onclick="document.getElementById('icsFile').click()">Choose .ics file...</button></div><div class="frow"><label>Calendar link</label><input id="importUrl" type="url" placeholder="Paste an .ics link or public calendar URL"></div><div class="modal-actions"><button class="mbtn" onclick="closeModal()">Close</button><button class="mbtn" onclick="importCalendarLink()">Import by link</button></div><div class="tip">Timezone fallback is Los Angeles if the file does not include a usable timezone.</div><div id="importResult" style="font-size:13px;color:var(--text2);margin-top:8px;display:none"></div>`);
+    modal(`<h3>Import calendar</h3><div class="frow"><label>Add events to</label><select id="importCal">${opts}</select></div><div class="frow"><label>File</label><button class="mbtn" style="width:100%" onclick="document.getElementById('icsFile').click()">Choose .ics file...</button></div><div class="modal-actions"><button class="mbtn" onclick="closeModal()">Close</button></div><div class="tip">Import by file is enabled here. Timezone fallback is Los Angeles if the file does not include a usable timezone.</div><div id="importResult" style="font-size:13px;color:var(--text2);margin-top:8px;display:none"></div>`);
   };
   function setImportResultMessage(message){
     const result=document.getElementById('importResult');
